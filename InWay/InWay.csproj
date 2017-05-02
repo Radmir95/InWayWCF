@@ -88,6 +88,10 @@
       <Project>{e79ebbb8-9d9c-4e7d-bca1-9b2670df2ab8}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InWay.Core\InWay.Core.csproj">
+      <Project>{73CEE1B5-C487-4559-BB09-ADCE56976421}</Project>
+      <Name>InWay.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
