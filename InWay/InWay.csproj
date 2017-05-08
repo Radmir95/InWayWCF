@@ -70,7 +70,6 @@
       <DependentUpon>BusDriverLogin.svc</DependentUpon>
     </Compile>
     <Compile Include="IBusDriverLogin.cs" />
-    <Compile Include="Message.cs" />
     <Compile Include="TestService.svc.cs">
       <DependentUpon>TestService.svc</DependentUpon>
     </Compile>
@@ -92,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{e79ebbb8-9d9c-4e7d-bca1-9b2670df2ab8}</Project>
+      <Project>{E79EBBB8-9D9C-4E7D-BCA1-9B2670DF2AB8}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\InWay.Core\InWay.Core.csproj">

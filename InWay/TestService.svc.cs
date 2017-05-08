@@ -1,7 +1,5 @@
 ﻿using DataAccessLayer.IRepository;
-using InWay;
-using InWay.DataAccessLayer.Repository;
-using System;
+using DataAccessLayer.Repository;
 
 namespace InWay
 {

@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DataAccessLayer.IRepository;
 using InWay;
-using InWay.DataAccessLayer;
 
 namespace DataAccessLayer.Repository
 {
-    public class BusDriverRepository
+    public class BusDriverRepository : IBusDriverRepository
     {
 
         private readonly ConnectionContext _context;

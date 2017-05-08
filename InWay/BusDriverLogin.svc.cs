@@ -1,18 +1,23 @@
-﻿using DataAccessLayer.Repository;
+﻿
+using DataAccessLayer.IRepository;
+using DataAccessLayer.Repository;
 
 namespace InWay
 {
 
     public class BusDriverLogin : IBusDriverLogin
     {
-        public Message TryLogin(string login, string password)
+        public BusDriver TryLogin(string login, string password)
         {
 
-           // var busDriverRepository = new BusDriverRepository();
+            IBusDriverRepository driver = new BusDriverRepository();
 
-           // var busDriver = busDriverRepository.GetBusDriver(login, password);
+            BusDriver busDriver = driver.GetBusDriver(login, password);
 
-            return new Message(){Header = "fesfe", Body = "fesfes"};
+            //ITourRepository tourRepository = new TourRepository();
+            // var busDriver = busDriverRepository.GetBusDriver(login, password);
+
+            return busDriver;
 
 
         }

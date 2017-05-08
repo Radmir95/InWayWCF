@@ -1,11 +1,11 @@
-﻿using DataAccessLayer.IRepository;
-using InWay.Core.Entity;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using DataAccessLayer.IRepository;
+using InWay.Core.Entity;
 
-namespace InWay.DataAccessLayer.Repository
+namespace DataAccessLayer.Repository
 {
     public class TourRepository : ITourRepository
     {

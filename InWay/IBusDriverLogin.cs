@@ -9,7 +9,7 @@ namespace InWay
     {
         [OperationContract]
         [WebGet(UriTemplate = "/TryLogin/?login={login}&?password={password}", ResponseFormat = WebMessageFormat.Json)]
-        Message TryLogin(string login, string password);
+        BusDriver TryLogin(string login, string password);
 
     }
 }

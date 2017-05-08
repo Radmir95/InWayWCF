@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.Common;
 
-namespace InWay.DataAccessLayer
+namespace DataAccessLayer
 {
     public class ConnectionContext
     {
