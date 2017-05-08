@@ -187,11 +187,13 @@ namespace InWay.DataAccessLayer.Repository
 
             try
             {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "tcp:inwaysql.database.windows.net,1433";
-                builder.UserID = "rkhusnut";
-                builder.Password = "Asilvertopmustbe1";
-                builder.InitialCatalog = "InWaySQL";
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
+                {
+                    DataSource = "tcp:inwaysql.database.windows.net,1433",
+                    UserID = "rkhusnut",
+                    Password = "Asilvertopmustbe1",
+                    InitialCatalog = "InWaySQL"
+                };
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
