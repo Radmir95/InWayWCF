@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Repository;
 using InWay;
+using InWay.Core.Entity;
 
 namespace DataAccessLayer
 {

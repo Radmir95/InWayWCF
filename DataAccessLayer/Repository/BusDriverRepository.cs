@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InWay;
-using InWay.Core.Entity;
 using InWay.DataAccessLayer;
 
 namespace DataAccessLayer.Repository
