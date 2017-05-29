@@ -23,8 +23,6 @@ namespace InWay
             if (driver.BusDriverId == -1) return null;
 
 
-
-
             return new List<Tour>(){new Tour(){Distance = 300}, new Tour(){Distance = 499}};
 
         }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using DataAccessLayer.IRepository;
 using InWay.Core.Entity;
 
@@ -89,16 +88,10 @@ namespace DataAccessLayer.Repository
         public void DeleteTour(Tour tour)
         {
 
-
-
-
         }
 
         public void UpdateTour(Tour tour)
         {
-
-
-
 
         }
 
@@ -145,60 +138,46 @@ namespace DataAccessLayer.Repository
 
         }
 
-       /* public List<Tour> GetToursById(int tourId)
+        public List<Tour> GetWaybillsOfDriver(int driverId)
         {
 
             var context = _context.Create();
             var conn = (SqlConnection)context;
 
-            var cmdAddTour = new SqlCommand("[dbo].[]", conn);
+            var cmdGetWaybills = new SqlCommand("select t.tourId, t.timeOfDeparture, t.timeOfArrival, t.Distance, departure.name, arrival.name from Waybill w " +
+                                            "join tour t on t.tourId = w.tourId " +
+                                            "join city departure on departure.cityId = t.pointOfDepartureId " +
+                                            "join city arrival on arrival.cityId = t.pointOfArrivalId" +
+                                            " where w.driverId =" + driverId.ToString(), conn);
 
-            var param = new SqlParameter()
-            {
-                ParameterName = "@timeOfDeparture",
-                Value = tour.TimeOfDeparture,
-                SqlDbType = SqlDbType.DateTime
-            };
-
-            cmdAddTour.Parameters.Add(param);
-
-            param = new SqlParameter()
-            {
-                ParameterName = "@timeOfArrival",
-                Value = tour.TimeOfArrival,
-                SqlDbType = SqlDbType.DateTime
-            };
-            cmdAddTour.Parameters.Add(param);
-
-            param = new SqlParameter()
-            {
-                ParameterName = "@distance",
-                Value = tour.Distance,
-                SqlDbType = SqlDbType.Int
-            };
-
-            cmdAddTour.Parameters.Add(param);
-
-            param = new SqlParameter()
-            {
-                ParameterName = "@pointOfDeparture",
-                Value = tour.PointOfDeparture,
-                SqlDbType = SqlDbType.Text
-            };
-
-            cmdAddTour.Parameters.Add(param);
-
-            param = new SqlParameter()
-            {
-                ParameterName = "@pointOfArrival",
-                Value = tour.PointOfArrival,
-                SqlDbType = SqlDbType.Text
-            };
-            cmdAddTour.Parameters.Add(param);
+            List<Tour> tours = new List<Tour>();
 
             try
             {
-                cmdAddTour.ExecuteNonQuery();
+                using (var dr = cmdGetWaybills.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Tour tour = new Tour();
+
+                        int tourId = (int)dr["tourId"];
+                        DateTime timeOfDeparture = (DateTime) dr["timeOfDeparture"];
+                        DateTime timeOfArrival = (DateTime)dr["timeOfArrival"];
+                        int distance = (int)dr["distance"];
+                        string pointOfDeparture = (string) dr["pointOfDeparture"];
+                        string pointOfArrival = (string)dr["pointOfArrival"];
+
+                        tour.TourId = tourId;
+                        tour.TimeOfDeparture = timeOfDeparture;
+                        tour.TimeOfArrival = timeOfArrival;
+                        tour.Distance = distance;
+                        tour.PointOfDeparture = pointOfDeparture;
+                        tour.PointOfArrival = pointOfArrival;
+
+                        tours.Add(tour);
+
+                    }
+                }
             }
             catch (SqlException)
             {
@@ -209,7 +188,11 @@ namespace DataAccessLayer.Repository
                 conn.Close();
             }
 
-            return null;
-        }*/
+            return tours;
+        }
+
+
+
+
     }
 }

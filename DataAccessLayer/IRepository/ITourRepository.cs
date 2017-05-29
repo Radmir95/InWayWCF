@@ -14,7 +14,7 @@ namespace DataAccessLayer.IRepository
         void DeleteTour(Tour tour);
         void UpdateTour(Tour tour);
         int GetTourId(Tour tour);
-        List<Tour> GetToursById(int tourId);
+        List<Tour> GetWaybillsOfDriver(int driverId);
 
     }
 }
