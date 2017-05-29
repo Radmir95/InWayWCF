@@ -14,7 +14,7 @@ namespace DataAccessLayer.IRepository
         void DeleteTour(Tour tour);
         void UpdateTour(Tour tour);
         int GetTourId(Tour tour);
-        Tour GetTourById(int tourId);
+        List<Tour> GetToursById(int tourId);
 
     }
 }

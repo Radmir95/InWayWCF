@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -144,89 +145,71 @@ namespace DataAccessLayer.Repository
 
         }
 
-        public Tour GetTourById(int tourId)
+       /* public List<Tour> GetToursById(int tourId)
         {
 
-            /* var context = _context.Create();
-             var conn = (SqlConnection)context;
+            var context = _context.Create();
+            var conn = (SqlConnection)context;
 
-             var cmdGetTour =
-                 new SqlCommand(
-                     "SELECT tourId, timeOfDeparture, timeOfArrival, distance, pointOfDeparture, pointOfArrival FROM Tour WHERE tourId = @tourId",
-                     conn);
+            var cmdAddTour = new SqlCommand("[dbo].[]", conn);
 
-             var param = new SqlParameter();
+            var param = new SqlParameter()
+            {
+                ParameterName = "@timeOfDeparture",
+                Value = tour.TimeOfDeparture,
+                SqlDbType = SqlDbType.DateTime
+            };
 
-             param.ParameterName = "@tourId";
-             param.Value = tourId;
-             param.SqlDbType = SqlDbType.Int;
-             cmdGetTour.Parameters.Add(param);
+            cmdAddTour.Parameters.Add(param);
 
-             Tour tour = null;
+            param = new SqlParameter()
+            {
+                ParameterName = "@timeOfArrival",
+                Value = tour.TimeOfArrival,
+                SqlDbType = SqlDbType.DateTime
+            };
+            cmdAddTour.Parameters.Add(param);
 
-             try
-             {
-                 using (var dr = cmdGetTour.ExecuteReader())
-                 {
-                     while (dr.Read())
-                     {
-                         tour = new Tour((DateTime)dr["timeOfDeparture"], (DateTime)dr["timeOfArrival"], (int)dr["distance"], dr["pointOfDeparture"].ToString(), dr["pointOfArrival"].ToString());
-                     }
-                 }
-             }
-             catch (SqlException ex)
-             {
-                 Console.WriteLine(ex.Message);
-             }
-             finally
-             {
-                 conn.Close();
-             }*/
+            param = new SqlParameter()
+            {
+                ParameterName = "@distance",
+                Value = tour.Distance,
+                SqlDbType = SqlDbType.Int
+            };
 
+            cmdAddTour.Parameters.Add(param);
 
+            param = new SqlParameter()
+            {
+                ParameterName = "@pointOfDeparture",
+                Value = tour.PointOfDeparture,
+                SqlDbType = SqlDbType.Text
+            };
+
+            cmdAddTour.Parameters.Add(param);
+
+            param = new SqlParameter()
+            {
+                ParameterName = "@pointOfArrival",
+                Value = tour.PointOfArrival,
+                SqlDbType = SqlDbType.Text
+            };
+            cmdAddTour.Parameters.Add(param);
 
             try
             {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
-                {
-                    DataSource = "tcp:inwaysql.database.windows.net,1433",
-                    UserID = "rkhusnut",
-                    Password = "Asilvertopmustbe1",
-                    InitialCatalog = "InWaySQL"
-                };
-
-                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-                {
-                    Console.WriteLine("\nQuery data example:");
-                    Console.WriteLine("=========================================\n");
-
-                    connection.Open();
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                    sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                    sb.Append("JOIN [SalesLT].[Product] p ");
-                    sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                    String sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-                            }
-                        }
-                    }
-                }
+                cmdAddTour.ExecuteNonQuery();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                Console.WriteLine(e.ToString());
+
             }
-        
+            finally
+            {
+                conn.Close();
+            }
 
             return null;
-        }
+        }*/
     }
 }

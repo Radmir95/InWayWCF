@@ -1,38 +1,25 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace InWay.Core.Entity
 {
+
+    [DataContract]
     public class Tour
     {
-        public int TourId { get; private set; }
-        public DateTime? TimeOfDeparture { get; private set; }
-        public DateTime? TimeOfArrival { get; private set; }
-        public int Distance { get; private set; }
-        public string PointOfDeparture { get; private set; }
-        public string PointOfArrival { get; private set; }
 
-        public Tour(DateTime? timeOfDeparture, DateTime? timeOfArrival, int distance, string pointOfDeparture, string pointOfArrival)
-        {
-
-            if (timeOfDeparture == null)
-                throw new ArgumentNullException("TimeOfDeparture can't be null");
-            TimeOfDeparture = timeOfDeparture;
-            if (timeOfArrival == null)
-                throw new ArgumentNullException("Time of arrival can't be null");
-            TimeOfArrival = timeOfArrival;
-            Distance = distance;
-            if (pointOfDeparture == null)
-                throw new ArgumentNullException("PointOfDeparture can't be null");
-            PointOfDeparture = pointOfDeparture;
-            if (pointOfArrival == null)
-                throw new ArgumentNullException("Point of arrival can't be null");
-            PointOfArrival = pointOfArrival;
-        }
-
-        public void SetTourId(int tourId)
-        {
-            TourId = tourId;
-        }
+        [DataMember(Order = 1)]
+        public int TourId { get;  set; }
+        [DataMember(Order = 2)]
+        public DateTime? TimeOfDeparture { get;  set; }
+        [DataMember(Order = 3)]
+        public DateTime? TimeOfArrival { get;  set; }
+        [DataMember(Order = 4)]
+        public int Distance { get;  set; }
+        [DataMember(Order = 5)]
+        public string PointOfDeparture { get;  set; }
+        [DataMember(Order = 6)]
+        public string PointOfArrival { get;  set; }
 
     }
 }
